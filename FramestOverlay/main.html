@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+我是主体
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<input id="btn" type="button" value="我是按钮：点我" /></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<a id="link" href="javascript:alertOverlay();;">我是链接：点我</a></p>
+
+<script type="text/javascript">
+var topw=window.top.document||window.top,
+	overlay=topw.getElementById('overlay');
+	loading=topw.getElementById('loading');
+	
+function alertOverlay(callBack){
+	if((!overlay)||(!loading)) return;
+	overlay.style.display=loading.style.display='block';
+	(typeof callBack=='function')&&(callBack());
+}
+function closeOverlay(callBack){
+	if((!overlay)||(!loading)) return;
+	overlay.style.display=loading.style.display='none';
+	(typeof callBack=='function')&&(callBack());
+}
+</script>
+
+
+<script type="text/javascript">
+document.getElementById('btn').onclick=function(){
+	alertOverlay(function(){
+		//do smthing ...
+		//do smthing if ok , for example by 4s
+		setTimeout(closeOverlay,4000);
+	});
+};
+</script>
+</body>
+</html>

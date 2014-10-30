@@ -1,0 +1,25 @@
+/* component */
+.trpt{background-color:rgba(0,0,0,0);background-color:transparent;
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr='#00000000',EndColorStr='#00000000');}
+
+.bgblack50{background-color:rgba(0,0,0,0.5);
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr='#7f000000',EndColorStr='#7f000000');}
+:root .bgblack50{filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr='#00000000',EndColorStr='#00000000');}
+/* 
+0.0 → 00 | 0.05 → 0c | 0.1 → 19 | 0.15 → 26 | 0.2 → 33 | 0.25 → 3f | 0.3 → 4c | 0.35 → 59 | 0.4 → 66 | 0.45 → 72 | 0.5 → 7f
+0.55 → 8c | 0.6 → 99 | 0.65 → a5 | 0.7 → b2 | 0.75 → bf | 0.8 → cc | 0.85 → d8 | 0.9 → e5 | 0.95 → f2 | 1.0 → ff   */
+
+.fixed-t{/* top:0 */
+	position:fixed;_position:absolute;top:0;bottom:auto;
+	_top:expression(eval((document.compatMode&&document.compatMode=="CSS1Compat")?document.documentElement.scrollTop:document.body.scrollTop));
+}
+.fixed-b{/* bottom:0 */
+	position:fixed;_position:absolute;bottom:0;_bottom:auto;top:auto;
+	_top:expression(eval((document.compatMode&&document.compatMode=="CSS1Compat")?(document.documentElement.scrollTop+document.documentElement.clientHeight-this.clientHeight-1):(document.body.scrollTop+document.body.clientHeight-this.clientHeight-1)));
+}
+.fixed-m{/* top:50% */
+	position:fixed;_position:absolute;top:50%;bottom:auto;	
+	/*margin-top:-divHeight/2px;！！！！！！！！！！！！！！！*/
+	_margin-top:0;
+	_top:expression(eval((document.compatMode&&document.compatMode=='CSS1Compat')?(document.documentElement.scrollTop+(document.documentElement.clientHeight-this.offsetHeight)/2):(document.body.scrollTop+(document.body.clientHeight-this.clientHeight)/2)));
+}

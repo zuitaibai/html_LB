@@ -1,0 +1,58 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="zh-CN" class="no-js lt-ie9  lt-ie8  lt-ie7"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="zh-CN" class="no-js lt-ie9  lt-ie8 ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="zh-CN" class="no-js lt-ie9 ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="zh-CN" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="zh-CN" class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>无标题文档</title>
+<link rel="stylesheet" href="css/base.css"/>
+<link rel="stylesheet" href="css/component.css"/>
+<!--[if lt IE 9]>
+<script src="js/html5shiv_3.7.2.min.js"></script>
+<![endif]-->
+<!--<script src="js/Modernizr_2.8.3.min.js"></script>-->
+<script src="js/jquery_1.8.3.min.js"></script>
+    <script>
+        var Function = this.Function;
+        var enumerables = true;
+        for (var i in {toString: 1}) enumerables = null;
+        if (enumerables) enumerables = ['hasOwnProperty', 'valueOf', 'isPrototypeOf', 'propertyIsEnumerable', 'toLocaleString', 'toString', 'constructor'];
+
+
+        Function.prototype.overloadSetter = function(usePlural){
+            var self = this;
+            return function(a, b){
+                if (a == null) return this;
+                if (usePlural || typeof a != 'string'){
+                    for (var k in a) self.call(this, k, a[k]);
+                    if (enumerables) for (var i = enumerables.length; i--;){
+                        k = enumerables[i];
+                        if (a.hasOwnProperty(k)) self.call(this, k, a[k]);
+                    }
+                } else {
+                    self.call(this, a, b);
+                }
+                return this;
+            };
+        };
+
+        Function.prototype.extend = function(key, value){
+            this[key] = value;
+        }.overloadSetter();
+
+        function a(){ this.b=23; }
+        a.extend('z',10);
+        for(var i in a ){ console.log('i:'+i+' a[i]:'+a[i]) }
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+</html>
